@@ -1,0 +1,20 @@
+<div class="header">
+  <label class="topcoat-switch">
+    <input type="checkbox" class="topcoat-switch__input" ng-model="way">
+    <div class="topcoat-switch__toggle"></div>
+  </label>
+  <input type="number" class="topcoat-text-input" placeholder="金额" ng-model="money">
+  <button class="topcoat-button--cta" ng-click="addBill()">ok</button>
+</div>
+
+<div class="topcoat-list">
+  <h3 class="topcoat-list__header">总计:{{totalMoney | way}}</h3>
+  <ul class="topcoat-list__container">
+    <li class="topcoat-list__item" ng-repeat="bill in bills">
+      <p>{{bill.time}}</p>
+      <p>{{bill.money | way}}</p>
+      <button>修改</button>
+      <button>删除</button>
+    </li>
+  </ul>
+</div>

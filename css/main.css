@@ -1,0 +1,18 @@
+.topcoat-switch__toggle:before {
+  content: '借帐';
+}
+.topcoat-switch__toggle:after {
+  content: '帮付';
+}
+
+.topcoat-text-input {
+  width: 130px;
+}
+
+.title {
+  text-align: center;
+}
+.header {
+  margin: 10px auto;
+  max-width: 300px;
+}
