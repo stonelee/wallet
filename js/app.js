@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('wallet', ['ngRoute', 'walletControllers', 'walletFilters']).config(function($routeProvider) {
+  angular.module('wallet', ['ngRoute', 'walletControllers', 'walletDirectives', 'walletFilters']).config(function($routeProvider) {
     $routeProvider.when('/', {
       controller: 'ListCtrl',
       templateUrl: 'list.html'

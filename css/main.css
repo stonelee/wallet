@@ -1,18 +1,36 @@
+@charset "UTF-8";
+/* line 1, ../sass/main.scss */
 .topcoat-switch__toggle:before {
   content: '借帐';
 }
+
+/* line 4, ../sass/main.scss */
 .topcoat-switch__toggle:after {
   content: '帮付';
 }
 
+/* line 8, ../sass/main.scss */
 .topcoat-text-input {
   width: 130px;
 }
 
+/* line 12, ../sass/main.scss */
 .title {
   text-align: center;
 }
+
+/* line 15, ../sass/main.scss */
 .header {
   margin: 10px auto;
   max-width: 300px;
+}
+
+/* line 20, ../sass/main.scss */
+.money span {
+  margin-right: 5px;
+  color: green;
+}
+/* line 24, ../sass/main.scss */
+.money span.warn {
+  color: red;
 }

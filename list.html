@@ -8,11 +8,13 @@
 </div>
 
 <div class="topcoat-list">
-  <h3 class="topcoat-list__header">总计:{{totalMoney | way}}</h3>
+  <h3 class="topcoat-list__header">总计:
+    <money number="{{totalMoney}}"></money>
+  </h3>
   <ul class="topcoat-list__container">
     <li class="topcoat-list__item" ng-repeat="bill in bills">
       <p>{{bill.time}}</p>
-      <p>{{bill.money | way}}</p>
+      <money number="{{bill.money}}"></money>
       <button>修改</button>
       <button>删除</button>
     </li>
