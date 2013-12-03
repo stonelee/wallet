@@ -3,27 +3,13 @@
 
   var app = angular.module('walletControllers', []);
 
-  var bills = [{
-      id: 1,
-      time: new Date(),
-      money: 2.5
-    }, {
-      id: 2,
-      time: new Date(),
-      money: -1
-    }
-  ];
-
-  app.controller('ListCtrl', function($scope) {
+  app.controller('ListCtrl', function($scope, Bill) {
     init();
 
-    var maxId = 3;
     $scope.addBill = function() {
-      var money = Number($scope.money);
+      var money = parseFloat($scope.money);
       money = $scope.isBorrowed ? -money : money;
-      bills.unshift({
-        id: maxId++,
-        time: new Date(),
+      Bill.save({
         money: money
       });
 
@@ -31,48 +17,48 @@
     };
 
     function init() {
-      $scope.bills = bills;
+      $scope.bills = Bill.query();
       $scope.money = '';
       $scope.isBorrowed = false;
       count();
     }
 
     function count() {
-      var totalMoney = 0;
-      angular.forEach($scope.bills, function(bill) {
-        totalMoney += bill.money;
-      });
-      $scope.totalMoney = totalMoney;
+      $scope.totalMoney = _.reduce($scope.bills, function(money, bill) {
+        return money + bill.money;
+      }, 0);
     }
   });
 
-  app.controller('DetailCtrl', function($scope, $location, $routeParams) {
-    function strEqual(a, b) {
-      return String(a) === String(b);
-    }
+  app.controller('DetailCtrl', function($scope, $location, $routeParams, Bill) {
+    var id = parseInt($routeParams.id, 10);
 
-    function getBill(id) {
-      for (var i = bills.length; i--;) {
-        var bill = bills[i];
-        if (strEqual(bill.id, id)) {
-          return bill;
-        }
-      }
-      return null;
-    }
-
-    var bill = getBill($routeParams.id);
+    var bill = Bill.get({
+      id: id
+    });
     $scope.isBorrowed = bill.money < 0 ? true : false;
     $scope.money = Math.abs(bill.money);
 
     $scope.save = function() {
-      var money = Number($scope.money);
+      var money = parseFloat($scope.money);
       money = $scope.isBorrowed ? -money : money;
-      bill.money = money;
+      Bill.save({
+        id: id
+      }, {
+        money: money
+      });
       $location.path('/');
     };
+
     $scope.notModified = function() {
-      return Number($scope.money) === bill.money;
+      return parseFloat($scope.money) === bill.money;
+    };
+
+    $scope.remove = function() {
+      Bill.remove({
+        id: id
+      });
+      $location.path('/');
     };
 
   });
