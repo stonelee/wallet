@@ -51,7 +51,10 @@
     };
 
     $scope.notModified = function() {
-      return parseFloat($scope.money) === bill.money;
+      var oldBorrowed = bill.money < 0 ? true : false;
+      var nBorrowed = $scope.isBorrowed === oldBorrowed;
+      var nMoney = parseFloat($scope.money) === bill.money;
+      return nBorrowed && nMoney;
     };
 
     $scope.remove = function() {
