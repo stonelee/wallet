@@ -31,7 +31,7 @@
   });
 
   app.controller('DetailCtrl', function($scope, $location, $routeParams, Bill) {
-    var id = parseInt($routeParams.id, 10);
+    var id = $routeParams.id;
 
     var bill = Bill.get({
       id: id
