@@ -22,7 +22,7 @@
           });
         });
         bills = _.sortBy(bills, function(bill) {
-          return bill.created;
+          return - new Date(bill.created);
         });
         return bills;
       },
@@ -33,16 +33,18 @@
           options = {};
         }
 
+        var id = guid();
         var bill = this.get(options);
         if (!bill) {
           bill = {
             created: new Date()
           };
         } else {
+          id = options.id;
           bill.updated = new Date();
         }
         _.extend(bill, data);
-        localStorageService.set(guid(), bill);
+        localStorageService.set(id, bill);
       },
 
       get: function(options) {

@@ -1,10 +1,20 @@
 (function() {
   'use strict';
 
-  angular.module('walletFilters', []).filter('way', function() {
-    return function(money) {
-      var way = money < 0 ? '借帐' : '帮付';
-      return way + ' ¥' + Math.abs(money);
+  angular.module('walletFilters', []).filter('time', function() {
+    return function(s) {
+      var d = new Date(s);
+
+      function clean(a) {
+        return a < 10 ? '0' + a : a;
+      }
+
+      var month = clean(d.getMonth() + 1);
+      var day = clean(d.getDate());
+      var h = clean(d.getHours());
+      var m = clean(d.getMinutes());
+
+      return month + '-' + day + ' ' + h + ':' + m;
     };
   });
 

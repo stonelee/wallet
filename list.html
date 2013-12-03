@@ -19,7 +19,7 @@
     </div>
     <ul class="list-group">
       <li class="list-group-item" ng-repeat="bill in bills">
-        <p>{{bill.created}}</p>
+        <p>{{bill.created | time}}</p>
         <p kj-money="bill.money"></p>
         <a class="btn btn-default" href="#/edit/{{bill.id}}">修改</a>
       </li>
