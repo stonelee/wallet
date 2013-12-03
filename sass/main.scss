@@ -1,47 +1,28 @@
-.topcoat-switch__toggle:before {
-  content: '借帐';
-}
-.topcoat-switch__toggle:after {
-  content: '帮付';
-}
-
-.topcoat-text-input {
-  width: 130px;
-}
-
-
-.title {
+h1 {
   text-align: center;
 }
 
-.header,.topcoat-button-bar {
-  margin: 10px auto;
-  max-width: 300px;
-}
 .list {
-  .header {
-    max-width: 300px;
+  .panel {
+    margin-top: 10px;
   }
-}
-.detail {
-  .header {
-    max-width: 230px;
-  }
-}
 
-
-.topcoat-list__container {
-  li {
+  .list-group-item {
     position: relative;
 
     a {
       position: absolute;
-      top: 40px;
+      top: 20px;
       right: 10px;
     }
   }
 }
 
+.detail {
+  .btn-group {
+    margin-top: 10px;
+  }
+}
 
 [kj-money] {
   span {

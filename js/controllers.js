@@ -20,12 +20,7 @@
     var maxId = 3;
     $scope.addBill = function() {
       var money = Number($scope.money);
-      if (isNaN(money)) {
-        console.log('error');
-        return;
-      }
-
-      money = $scope.way ? -money : money;
+      money = $scope.isBorrowed ? -money : money;
       bills.unshift({
         id: maxId++,
         time: new Date(),
@@ -35,19 +30,19 @@
       init();
     };
 
+    function init() {
+      $scope.bills = bills;
+      $scope.money = '';
+      $scope.isBorrowed = false;
+      count();
+    }
+
     function count() {
       var totalMoney = 0;
       angular.forEach($scope.bills, function(bill) {
         totalMoney += bill.money;
       });
       $scope.totalMoney = totalMoney;
-    }
-
-    function init() {
-      $scope.bills = bills;
-      $scope.money = '';
-      $scope.way = false;
-      count();
     }
   });
 
@@ -67,23 +62,17 @@
     }
 
     var bill = getBill($routeParams.id);
-    $scope.way = bill.money < 0 ? true : false;
+    $scope.isBorrowed = bill.money < 0 ? true : false;
     $scope.money = Math.abs(bill.money);
 
     $scope.save = function() {
       var money = Number($scope.money);
-      if (isNaN(money)) {
-        console.log('error');
-        return;
-      }
-
-      money = $scope.way ? -money : money;
-      $scope.bills.unshift({
-        time: new Date(),
-        money: money
-      });
-
-      init();
+      money = $scope.isBorrowed ? -money : money;
+      bill.money = money;
+      $location.path('/');
+    };
+    $scope.notModified = function() {
+      return Number($scope.money) === bill.money;
     };
 
   });

@@ -1,22 +1,27 @@
 <div class="list">
-  <div class="header">
-    <label class="topcoat-switch">
-      <input type="checkbox" class="topcoat-switch__input" ng-model="way">
-      <div class="topcoat-switch__toggle"></div>
-    </label>
-    <input type="number" class="topcoat-text-input" placeholder="金额" ng-model="money">
-    <button class="topcoat-button--cta" ng-click="addBill()">ok</button>
-  </div>
+  <form name="billForm" class="form-inline">
+    <div class="input-group" ng-class="{'has-error':billForm.$invalid}">
+      <span class="input-group-addon">
+        <label>
+          <input type="checkbox" ng-model="isBorrowed">借帐
+        </label>
+      </span>
+      <input type="number" class="form-control" placeholder="金额" ng-model="money" required>
+      <span class="input-group-btn">
+        <button class="btn btn-primary" ng-click="addBill()" ng-disabled="billForm.$invalid">ok</button>
+      </span>
+    </div>
+  </form>
 
-  <div class="topcoat-list">
-    <h3 class="topcoat-list__header">总计:
+  <div class="panel panel-default">
+    <div class="panel-heading">总计:
       <span kj-money="totalMoney"></span>
-    </h3>
-    <ul class="topcoat-list__container">
-      <li class="topcoat-list__item" ng-repeat="bill in bills">
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="bill in bills">
         <p>{{bill.time}}</p>
         <p kj-money="bill.money"></p>
-        <a class="topcoat-button--cta" href="#/edit/{{bill.id}}">修改</a>
+        <a class="btn btn-default" href="#/edit/{{bill.id}}">修改</a>
       </li>
     </ul>
   </div>
