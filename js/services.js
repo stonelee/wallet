@@ -22,7 +22,7 @@
           });
         });
         bills = _.sortBy(bills, function(bill) {
-          return - new Date(bill.created);
+          return -new Date(bill.created);
         });
         return bills;
       },
@@ -55,6 +55,10 @@
       remove: function(options) {
         var id = options.id;
         localStorageService.remove(id);
+      },
+
+      clearAll: function() {
+        localStorageService.clearAll();
       }
     };
   });

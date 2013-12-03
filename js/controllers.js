@@ -28,6 +28,11 @@
         return money + bill.money;
       }, 0);
     }
+
+    $scope.clearAll = function() {
+      Bill.clearAll();
+      init();
+    };
   });
 
   app.controller('DetailCtrl', function($scope, $location, $routeParams, Bill) {
