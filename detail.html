@@ -1,0 +1,21 @@
+<form name="billForm" class="detail">
+  <div class="header">
+    <label class="topcoat-switch">
+      <input type="checkbox" class="topcoat-switch__input" ng-model="way">
+      <div class="topcoat-switch__toggle"></div>
+    </label>
+    <input type="number" class="topcoat-text-input" placeholder="金额" ng-model="money">
+  </div>.
+
+  <div class="topcoat-button-bar">
+    <div class="topcoat-button-bar__item">
+      <a class="topcoat-button-bar__button" href="#/">取消</a>
+    </div>
+    <div class="topcoat-button-bar__item">
+      <button class="topcoat-button-bar__button" ng-click="save()">保存</button>
+    </div>
+    <div class="topcoat-button-bar__item">
+      <button class="topcoat-button-bar__button" ng-click="delete()">删除</button>
+    </div>
+  </div>
+</form>

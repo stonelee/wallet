@@ -6,7 +6,7 @@
       controller: 'ListCtrl',
       templateUrl: 'list.html'
     }).when('/edit/:id', {
-      controller: 'EditCtrl',
+      controller: 'DetailCtrl',
       templateUrl: 'detail.html'
     }).otherwise({
       redirectTo: '/'
