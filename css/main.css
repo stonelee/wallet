@@ -26,11 +26,11 @@
 }
 
 /* line 20, ../sass/main.scss */
-.money span {
+[kj-money] span {
   margin-right: 5px;
   color: green;
 }
 /* line 24, ../sass/main.scss */
-.money span.warn {
+[kj-money] span.warn {
   color: red;
 }

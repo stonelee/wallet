@@ -9,12 +9,12 @@
 
 <div class="topcoat-list">
   <h3 class="topcoat-list__header">总计:
-    <money number="{{totalMoney}}"></money>
+    <span kj-money="totalMoney"></span>
   </h3>
   <ul class="topcoat-list__container">
     <li class="topcoat-list__item" ng-repeat="bill in bills">
       <p>{{bill.time}}</p>
-      <money number="{{bill.money}}"></money>
+      <p kj-money="bill.money"></p>
       <button>修改</button>
       <button>删除</button>
     </li>
