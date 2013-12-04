@@ -14,3 +14,12 @@
     <button class="btn btn-danger" ng-click="remove()">delete</button>
   </div>
 </form>
+<script type="text/ng-template" id="modal.html">
+  <div class="modal-body">
+    <p>Do you really want to clear the record?</p>
+  </div>
+  <div class="modal-footer">
+      <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+      <button class="btn btn-danger" ng-click="ok()">OK</button>
+  </div>
+</script>

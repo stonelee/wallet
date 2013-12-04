@@ -22,13 +22,17 @@ h1 {
 .detail .btn-group {
   margin-top: 10px;
 }
+/* line 25, ../sass/main.scss */
+.detail .btn-group .btn {
+  padding: 6px 30px;
+}
 
-/* line 28, ../sass/main.scss */
+/* line 32, ../sass/main.scss */
 [kj-money] span {
   margin-right: 5px;
   color: green;
 }
-/* line 32, ../sass/main.scss */
+/* line 36, ../sass/main.scss */
 [kj-money] span.warn {
   color: red;
 }

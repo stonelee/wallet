@@ -54,7 +54,7 @@
     };
   };
 
-  app.controller('DetailCtrl', function($scope, $location, $routeParams, Bill) {
+  app.controller('DetailCtrl', function($scope, $location, $routeParams, Bill, $modal) {
     var id = $routeParams.id;
 
     var bill = Bill.get({
@@ -82,11 +82,20 @@
     };
 
     $scope.remove = function() {
-      Bill.remove({
-        id: id
+      modal(function() {
+        Bill.remove({
+          id: id
+        });
+        $location.path('/');
       });
-      $location.path('/');
     };
+
+    function modal(callback) {
+      $modal.open({
+        templateUrl: 'modal.html',
+        controller: ModalInstanceCtrl
+      }).result.then(callback);
+    }
 
   });
 
