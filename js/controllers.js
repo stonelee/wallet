@@ -58,7 +58,7 @@
     $scope.notModified = function() {
       var oldBorrowed = bill.money < 0 ? true : false;
       var nBorrowed = $scope.isBorrowed === oldBorrowed;
-      var nMoney = parseFloat($scope.money) === bill.money;
+      var nMoney = parseFloat($scope.money) === Math.abs(bill.money);
       return nBorrowed && nMoney;
     };
 
