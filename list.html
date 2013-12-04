@@ -26,5 +26,14 @@
     </ul>
   </div>
 
-  <button class="btn btn-danger" ng-click="clearAll()">clear all!</button>
+  <button class="btn btn-danger" ng-click="clearAll()" ng-disabled="totalMoney==0">clear all!</button>
 </div>
+<script type="text/ng-template" id="modal.html">
+  <div class="modal-body">
+    <p>Do you really want to clear <strong>all</strong> the data?</p>
+  </div>
+  <div class="modal-footer">
+      <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+      <button class="btn btn-danger" ng-click="ok()">OK</button>
+  </div>
+</script>

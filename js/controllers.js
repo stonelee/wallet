@@ -3,7 +3,7 @@
 
   var app = angular.module('walletControllers', []);
 
-  app.controller('ListCtrl', function($scope, Bill) {
+  app.controller('ListCtrl', function($scope, Bill, $modal) {
     init();
 
     $scope.addBill = function() {
@@ -30,10 +30,29 @@
     }
 
     $scope.clearAll = function() {
-      Bill.clearAll();
-      init();
+      modal(function() {
+        Bill.clearAll();
+        init();
+      });
     };
+
+    function modal(callback) {
+      $modal.open({
+        templateUrl: 'modal.html',
+        controller: ModalInstanceCtrl
+      }).result.then(callback);
+    }
   });
+
+  var ModalInstanceCtrl = function($scope, $modalInstance) {
+    $scope.ok = function() {
+      $modalInstance.close();
+    };
+
+    $scope.cancel = function() {
+      $modalInstance.dismiss('cancel');
+    };
+  };
 
   app.controller('DetailCtrl', function($scope, $location, $routeParams, Bill) {
     var id = $routeParams.id;

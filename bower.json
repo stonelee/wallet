@@ -18,7 +18,7 @@
     "bootstrap": "~3.0.2",
     "angular": "~1.2.3",
     "angular-route": "~1.2.3",
-    "angular-resource": "~1.2.3",
-    "angular-local-storage": "*"
+    "angular-local-storage": "*",
+    "angular-bootstrap3": "*"
   }
 }
